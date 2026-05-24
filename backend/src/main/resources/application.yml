@@ -1,0 +1,74 @@
+spring:
+  application:
+    name: upi-offline-mesh
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/upi_mesh_db
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 10
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    open-in-view: false
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      timeout: 2000ms
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    time-zone: UTC
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+jwt:
+  secret: ${JWT_SECRET:upi-mesh-super-secret-key-2024-production-grade-256bit}
+  expiration: 86400000
+  refresh-expiration: 604800000
+
+app:
+  encryption:
+    rsa-key-size: 2048
+    aes-key-size: 256
+  mesh:
+    max-ttl: 10
+    gossip-fanout: 3
+    simulation-interval: 2000
+  rate-limit:
+    capacity: 100
+    refill-tokens: 100
+    refill-duration: 60
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+
+logging:
+  level:
+    com.upi.mesh: DEBUG
+    org.springframework.security: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 195 100% 50%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 195 100% 50%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Cyber scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #0a0a0f; }
+::-webkit-scrollbar-thumb { background: #00d4ff33; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #00d4ff66; }
+
+/* Neon glow utilities */
+@layer utilities {
+  .neon-blue  { text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff; }
+  .neon-purple{ text-shadow: 0 0 10px #7c3aed, 0 0 20px #7c3aed; }
+  .neon-green { text-shadow: 0 0 10px #10b981, 0 0 20px #10b981; }
+  .neon-pink  { text-shadow: 0 0 10px #ec4899, 0 0 20px #ec4899; }
+
+  .glow-blue  { box-shadow: 0 0 15px #00d4ff33, 0 0 30px #00d4ff11; }
+  .glow-purple{ box-shadow: 0 0 15px #7c3aed33, 0 0 30px #7c3aed11; }
+  .glow-green { box-shadow: 0 0 15px #10b98133, 0 0 30px #10b98111; }
+  .glow-red   { box-shadow: 0 0 15px #ef444433, 0 0 30px #ef444411; }
+
+  .glass {
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .cyber-border {
+    border: 1px solid rgba(0,212,255,0.2);
+  }
+
+  .cyber-grid-bg {
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+}
+
+/* Animated gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #00d4ff, #7c3aed, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Packet travel animation */
+@keyframes packet-travel {
+  0%   { stroke-dashoffset: 1000; opacity: 1; }
+  100% { stroke-dashoffset: 0;    opacity: 0.3; }
+}
+
+.packet-path {
+  stroke-dasharray: 1000;
+  animation: packet-travel 2s linear infinite;
+}
+
+/* Matrix rain */
+@keyframes matrix-char {
+  0%   { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(100px); }
+}
+
+/* Scan line effect */
+.scan-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00d4ff44, transparent);
+  animation: scan-line 4s linear infinite;
+  pointer-events: none;
+}
+
+/* Loading shimmer */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #1a1a2e 25%, #16213e 50%, #1a1a2e 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
