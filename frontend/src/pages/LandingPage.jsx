@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Zap, Shield, Radio, Lock, ArrowRight, Github } from 'lucide-react'
+import { Zap, Shield, Radio, Lock, ArrowRight } from 'lucide-react'
 import { Button } from '../components/ui/button'
 import MatrixRain from '../components/effects/MatrixRain'
+import PublicNavbar from '../components/layout/PublicNavbar'
 
 const features = [
   { icon: Radio,  title: 'Mesh Propagation',  desc: 'Payments travel hop-by-hop through nearby devices using gossip protocol with TTL management.', color: 'text-cyan-400', bg: 'bg-cyan-500/10' },
@@ -16,23 +17,9 @@ export default function LandingPage() {
     <div className="min-h-screen bg-[#0a0a0f] text-white overflow-hidden relative">
       <MatrixRain />
 
-      {/* Nav */}
-      <nav className="relative z-10 flex items-center justify-between px-8 py-5 border-b border-white/5">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center">
-            <Zap className="w-4 h-4 text-white" />
-          </div>
-          <span className="font-bold text-white">UPI Offline Mesh</span>
-        </div>
-        <div className="flex items-center gap-3">
-          <Link to="/login">
-            <Button variant="ghost" size="sm">Sign In</Button>
-          </Link>
-          <Link to="/register">
-            <Button variant="cyber" size="sm">Get Started</Button>
-          </Link>
-        </div>
-      </nav>
+      <div className="relative z-10">
+        <PublicNavbar />
+      </div>
 
       {/* Hero */}
       <section className="relative z-10 flex flex-col items-center justify-center text-center px-6 pt-24 pb-20">

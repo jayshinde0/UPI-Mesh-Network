@@ -1,21 +1,29 @@
 import { NavLink, useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
 import {
-  LayoutDashboard, Send, History, Radio, Lock, BarChart3,
-  Network, ScrollText, ShieldCheck, LogOut, Wifi, WifiOff, Zap
+  LayoutDashboard,
+  Send,
+  History,
+  Radio,
+  Lock,
+  BarChart3,
+  Network,
+  ScrollText,
+  ShieldCheck,
+  LogOut,
+  Zap,
 } from 'lucide-react'
 import { useAuthStore } from '../../store/authStore'
 import { useMeshStore } from '../../store/meshStore'
 
 const navItems = [
-  { to: '/dashboard',   icon: LayoutDashboard, label: 'Dashboard',    color: 'text-cyan-400' },
-  { to: '/payment',     icon: Send,             label: 'Send Payment', color: 'text-purple-400' },
-  { to: '/transactions',icon: History,          label: 'Transactions', color: 'text-blue-400' },
-  { to: '/mesh',        icon: Radio,            label: 'Mesh Simulator',color: 'text-emerald-400' },
-  { to: '/topology',    icon: Network,          label: 'Network Topology', color: 'text-yellow-400' },
-  { to: '/encryption',  icon: Lock,             label: 'Encryption',   color: 'text-pink-400' },
-  { to: '/analytics',   icon: BarChart3,        label: 'Analytics',    color: 'text-orange-400' },
-  { to: '/logs',        icon: ScrollText,       label: 'Live Logs',    color: 'text-red-400' },
+  { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+  { to: '/payment', icon: Send, label: 'Send Payment' },
+  { to: '/transactions', icon: History, label: 'Transactions' },
+  { to: '/mesh', icon: Radio, label: 'Mesh Simulator' },
+  { to: '/topology', icon: Network, label: 'Topology' },
+  { to: '/encryption', icon: Lock, label: 'Encryption' },
+  { to: '/analytics', icon: BarChart3, label: 'Analytics' },
+  { to: '/logs', icon: ScrollText, label: 'Live Logs' },
 ]
 
 export default function Sidebar() {
@@ -29,63 +37,57 @@ export default function Sidebar() {
   }
 
   return (
-    <motion.aside
-      initial={{ x: -280 }}
-      animate={{ x: 0 }}
-      className="w-64 h-full flex flex-col border-r border-white/5 bg-black/40 backdrop-blur-xl"
-    >
-      {/* Logo */}
-      <div className="p-6 border-b border-white/5">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center shadow-[0_0_15px_rgba(0,212,255,0.4)]">
-            <Zap className="w-5 h-5 text-white" />
+    <aside className="flex h-full w-[240px] shrink-0 flex-col border-r border-white/[0.06] bg-[#0a0a0e]">
+      <div className="border-b border-white/[0.06] px-4 py-5">
+        <div className="flex items-center gap-2.5">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-cyan-500/20 bg-cyan-500/10">
+            <Zap className="h-4 w-4 text-cyan-400" strokeWidth={2.5} />
           </div>
-          <div>
-            <h1 className="text-sm font-bold text-white">UPI Mesh</h1>
-            <p className="text-[10px] text-gray-500 font-mono">OFFLINE NETWORK</p>
+          <div className="leading-tight">
+            <p className="text-sm font-semibold text-white">UPI Mesh</p>
+            <p className="text-[10px] font-medium uppercase tracking-widest text-zinc-600">
+              Console
+            </p>
           </div>
         </div>
       </div>
 
-      {/* WS Status */}
-      <div className="px-4 py-2">
-        <div className={`flex items-center gap-2 text-xs px-3 py-1.5 rounded-full ${
-          wsConnected ? 'bg-emerald-500/10 text-emerald-400' : 'bg-red-500/10 text-red-400'
-        }`}>
-          {wsConnected
-            ? <><Wifi className="w-3 h-3" /> Live Connected</>
-            : <><WifiOff className="w-3 h-3" /> Disconnected</>
-          }
-          {wsConnected && (
-            <span className="ml-auto w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          )}
+      <div className="px-3 py-3">
+        <div
+          className={`flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium ${
+            wsConnected
+              ? 'bg-emerald-500/10 text-emerald-400'
+              : 'bg-zinc-800/80 text-zinc-500'
+          }`}
+        >
+          <span
+            className={`h-1.5 w-1.5 rounded-full ${
+              wsConnected ? 'bg-emerald-400' : 'bg-zinc-600'
+            }`}
+          />
+          {wsConnected ? 'Realtime connected' : 'Realtime offline'}
         </div>
       </div>
 
-      {/* Nav */}
-      <nav className="flex-1 px-3 py-2 space-y-0.5 overflow-y-auto">
-        {navItems.map(({ to, icon: Icon, label, color }) => (
+      <nav className="flex-1 space-y-0.5 overflow-y-auto px-3 pb-2">
+        {navItems.map(({ to, icon: Icon, label }) => (
           <NavLink
             key={to}
             to={to}
             className={({ isActive }) =>
-              `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all group ${
+              `flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
                 isActive
-                  ? 'bg-white/8 text-white border border-white/10'
-                  : 'text-gray-400 hover:text-white hover:bg-white/5'
+                  ? 'bg-white/[0.08] text-white'
+                  : 'text-zinc-500 hover:bg-white/[0.04] hover:text-zinc-200'
               }`
             }
           >
             {({ isActive }) => (
               <>
-                <Icon className={`w-4 h-4 ${isActive ? color : 'text-gray-500 group-hover:' + color}`} />
-                <span className="font-medium">{label}</span>
-                {isActive && (
-                  <motion.div
-                    layoutId="activeIndicator"
-                    className="ml-auto w-1 h-4 rounded-full bg-cyan-400"
-                  />
-                )}
+                <Icon
+                  className={`h-4 w-4 shrink-0 ${isActive ? 'text-cyan-400' : 'text-zinc-600'}`}
+                />
+                {label}
               </>
             )}
           </NavLink>
@@ -95,36 +97,38 @@ export default function Sidebar() {
           <NavLink
             to="/admin"
             className={({ isActive }) =>
-              `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all group ${
-                isActive ? 'bg-white/8 text-white border border-white/10' : 'text-gray-400 hover:text-white hover:bg-white/5'
+              `mt-2 flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
+                isActive
+                  ? 'bg-white/[0.08] text-white'
+                  : 'text-zinc-500 hover:bg-white/[0.04] hover:text-zinc-200'
               }`
             }
           >
-            <ShieldCheck className="w-4 h-4 text-gray-500 group-hover:text-red-400" />
-            <span className="font-medium">Admin Panel</span>
+            <ShieldCheck className="h-4 w-4 shrink-0" />
+            Admin
           </NavLink>
         )}
       </nav>
 
-      {/* User */}
-      <div className="p-4 border-t border-white/5">
-        <div className="flex items-center gap-3 mb-3">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center text-xs font-bold text-white">
+      <div className="border-t border-white/[0.06] p-3">
+        <div className="mb-2 flex items-center gap-2.5 rounded-lg px-2 py-2">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-800 text-xs font-semibold text-zinc-300">
             {user?.fullName?.[0] ?? 'U'}
           </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-xs font-semibold text-white truncate">{user?.fullName}</p>
-            <p className="text-[10px] text-gray-500 font-mono truncate">{user?.upiId}</p>
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-xs font-medium text-white">{user?.fullName}</p>
+            <p className="truncate font-mono text-[10px] text-zinc-600">{user?.upiId}</p>
           </div>
         </div>
         <button
+          type="button"
           onClick={handleLogout}
-          className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-gray-400 hover:text-red-400 hover:bg-red-500/10 transition-all"
+          className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium text-zinc-500 transition-colors hover:bg-red-500/10 hover:text-red-400"
         >
-          <LogOut className="w-3.5 h-3.5" />
-          Sign Out
+          <LogOut className="h-3.5 w-3.5" />
+          Sign out
         </button>
       </div>
-    </motion.aside>
+    </aside>
   )
 }
