@@ -24,7 +24,7 @@ Use this script for a **project demo, viva, or presentation**. Each step include
 
 | Role | Username | Password | UPI ID | UPI PIN |
 |------|----------|----------|--------|---------|
-| Sender | `alice` | `Alice@123` | `alice@upimesh` | `1234` |
+| Sender | `alice` | `Alice@123` | `![alt text](image.png)` | `1234` |
 | Receiver | `bob` | `Bob@1234` | `bob@upimesh` | `1234` |
 | Admin | `admin` | `Admin@123` | `admin@upimesh` | `1234` |
 

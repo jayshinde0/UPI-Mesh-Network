@@ -7,11 +7,10 @@ import RegisterPage from './pages/RegisterPage'
 import DashboardPage from './pages/DashboardPage'
 import PaymentPage from './pages/PaymentPage'
 import TransactionsPage from './pages/TransactionsPage'
-import MeshSimulatorPage from './pages/MeshSimulatorPage'
 import EncryptionPage from './pages/EncryptionPage'
 import AnalyticsPage from './pages/AnalyticsPage'
 import AdminPage from './pages/AdminPage'
-import NetworkTopologyPage from './pages/NetworkTopologyPage'
+import MeshTopologyPage from './pages/MeshTopologyPage'
 import LiveLogsPage from './pages/LiveLogsPage'
 import { Toaster } from './components/ui/toaster'
 
@@ -36,10 +35,9 @@ export default function App() {
           <Route path="dashboard"  element={<DashboardPage />} />
           <Route path="payment"    element={<PaymentPage />} />
           <Route path="transactions" element={<TransactionsPage />} />
-          <Route path="mesh"       element={<MeshSimulatorPage />} />
+          <Route path="mesh-topology" element={<MeshTopologyPage />} />
           <Route path="encryption" element={<EncryptionPage />} />
           <Route path="analytics"  element={<AnalyticsPage />} />
-          <Route path="topology"   element={<NetworkTopologyPage />} />
           <Route path="logs"       element={<LiveLogsPage />} />
           <Route path="admin"      element={
             <ProtectedRoute adminOnly><AdminPage /></ProtectedRoute>

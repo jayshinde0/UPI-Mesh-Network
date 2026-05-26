@@ -3,14 +3,13 @@ import {
   LayoutDashboard,
   Send,
   History,
-  Radio,
   Lock,
   BarChart3,
-  Network,
   ScrollText,
   ShieldCheck,
   LogOut,
   Zap,
+  GitBranch,
 } from 'lucide-react'
 import { useAuthStore } from '../../store/authStore'
 import { useMeshStore } from '../../store/meshStore'
@@ -19,8 +18,7 @@ const navItems = [
   { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { to: '/payment', icon: Send, label: 'Send Payment' },
   { to: '/transactions', icon: History, label: 'Transactions' },
-  { to: '/mesh', icon: Radio, label: 'Mesh Simulator' },
-  { to: '/topology', icon: Network, label: 'Topology' },
+  { to: '/mesh-topology', icon: GitBranch, label: 'Mesh Topology' },
   { to: '/encryption', icon: Lock, label: 'Encryption' },
   { to: '/analytics', icon: BarChart3, label: 'Analytics' },
   { to: '/logs', icon: ScrollText, label: 'Live Logs' },
