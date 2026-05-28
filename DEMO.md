@@ -158,13 +158,14 @@ Use this script for a **project demo, viva, or presentation**. Each step include
 
 ### Step 9: Open Mesh Simulator
 
-**Do:** Go to **Mesh** (`/mesh`)
+**Do:** Go to **Mesh Simulator** (`/mesh`)
 
 **What it does:**
 
 - Lists **mesh devices** (relay + bridge nodes)
 - Lists **packets** and their status
 - Shows **live propagation events** (WebSocket `/topic/propagation`)
+- Provides controls to inject packets and manage the mesh network
 
 **Say:** *"This simulates Bluetooth-style gossip — packets hop between nearby devices."*
 
@@ -253,11 +254,11 @@ Use this script for a **project demo, viva, or presentation**. Each step include
 
 ### Step 15: Network topology
 
-**Do:** Open **Topology** (`/topology`)
+**Do:** Open **Topology** (`/mesh-topology`)
 
-**What it does:** SVG map of devices — relay nodes (purple), bridge nodes (green), online/offline state.
+**What it does:** Interactive visualization and simulation of the mesh network with animated packet flow.
 
-**Say:** *"Visual view of the mesh graph used for propagation."*
+**Say:** *"Visual simulation of how packets propagate through the mesh network."*
 
 ---
 

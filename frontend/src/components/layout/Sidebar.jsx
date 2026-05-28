@@ -10,6 +10,7 @@ import {
   LogOut,
   Zap,
   GitBranch,
+  Network,
 } from 'lucide-react'
 import { useAuthStore } from '../../store/authStore'
 import { useMeshStore } from '../../store/meshStore'
@@ -18,7 +19,8 @@ const navItems = [
   { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { to: '/payment', icon: Send, label: 'Send Payment' },
   { to: '/transactions', icon: History, label: 'Transactions' },
-  { to: '/mesh-topology', icon: GitBranch, label: 'Mesh Topology' },
+  { to: '/mesh', icon: Network, label: 'Mesh Simulator' },
+  { to: '/mesh-topology', icon: GitBranch, label: 'Topology' },
   { to: '/encryption', icon: Lock, label: 'Encryption' },
   { to: '/analytics', icon: BarChart3, label: 'Analytics' },
   { to: '/logs', icon: ScrollText, label: 'Live Logs' },
